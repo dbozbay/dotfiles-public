@@ -2,6 +2,10 @@
 
 { config, pkgs, ... }:
 
+let
+  home = builtins.getEnv "HOME";
+  xdg_configHome = "${home}/.config";
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -37,7 +41,7 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-
+    "${xdg_configHome}/kitty/kitty.conf".source = ./kitty.conf;
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
@@ -55,10 +59,11 @@
   #  /etc/profiles/per-user/davish/etc/profile.d/hm-session-vars.sh
   #
   # if you don't want to manage your shell through Home Manager.
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
+  #home.sessionVariables = {
+   # xdg_configHome = "~/.config";
+  #};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
+

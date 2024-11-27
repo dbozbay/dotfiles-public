@@ -39,8 +39,8 @@
     let 
       flakeDir = "~/nix";
     in {
-      darwin-rb = "darwin-rebuild switch --flake ${flakeDir}";
-      darwin-flake = "nvim ${flakeDir}/flake.nix";
+      switch = "darwin-rebuild switch --flake ${flakeDir}";
+      flake = "nvim ${flakeDir}/flake.nix";
 
       ll = "ls -l";
       v = "nvim";
