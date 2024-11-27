@@ -51,18 +51,31 @@
 
     # System default settings
     system.defaults = {
-      dock.autohide = true;
-      dock.mru-spaces = true;
-      dock.persistent-apps = [
+      dock = {
+        autohide = true;
+	autohide-delay = 0.0;
+	autohide-time-modifier = 0.2;
+	tilesize = 48;
+	launchanim = false;
+	static-only = false;
+	showhidden = true;
+	show-recents = false;
+	show-process-indicators = true;
+	orientation = "bottom";
+	mru-spaces = false;
+	persistent-apps = [
 	  "/System/Applications/Safari.app"
 	  "${pkgs.arc-browser}/Applications/Arc.app"
 	  "${pkgs.kitty}/Applications/kitty.app"
-      ];
+        ];
+      };
+      NSGlobalDomain = {
+        AppleICUForce24HourTime = true;
+	AppleInterfaceStyle = "Dark";
+	KeyRepeat = 2;
+      };
       finder.FXPreferredViewStyle = "clmv";
       loginwindow.GuestEnabled = false;
-      NSGlobalDomain.AppleICUForce24HourTime = true;
-      NSGlobalDomain.AppleInterfaceStyle = "Dark";
-      NSGlobalDomain.KeyRepeat = 2;
     };
 
     # Set Git commit hash for darwin-version.

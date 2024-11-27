@@ -31,6 +31,7 @@ in
     tmux
     yazi
     lazygit
+    ghq
     # nu
   ];
 
