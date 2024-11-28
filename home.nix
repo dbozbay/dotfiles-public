@@ -98,6 +98,7 @@ in
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
     "${xdg_configHome}/kitty/kitty.conf".source = ./kitty.conf;
+    "${xdg_configHome}/karabiner/karabiner.json".source = ./karabiner.json;
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose

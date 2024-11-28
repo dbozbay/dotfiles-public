@@ -14,7 +14,6 @@
 
     # Auto upgrade nix package and the daemon service.
     services.nix-daemon.enable = true;
-    # services.karabiner-elements.enable = true;
     # nix.package = pkgs.nix;
 
     # JetBrains Mono for life
@@ -24,7 +23,7 @@
 
     # Necessary for using flakes on this system.
     nix.settings.experimental-features = "nix-command flakes";
-
+ 
     # Create /etc/zshrc/ that loads the nix-darwin environment
     programs.zsh.enable = true;
 
@@ -64,6 +63,11 @@
       };
       finder.FXPreferredViewStyle = "clmv";
       loginwindow.GuestEnabled = false;
+    };
+    
+    system.keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
     };
 
     # Set Git commit hash for darwin-version.
