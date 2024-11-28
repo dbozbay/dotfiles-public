@@ -70,7 +70,7 @@ in
         ui = true;
       };
       ghq = { 
-        root = "${home}/Developer";
+        root = "${home}/Dev";
       };
     };
   };
