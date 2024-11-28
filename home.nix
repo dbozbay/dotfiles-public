@@ -5,7 +5,6 @@
 let
   home = builtins.getEnv "HOME";
   pwd = builtins.getEnv "PWD";
-  devDir = "${home}/Developer";
   xdg_configHome = "${home}/.config";
 in
 {
@@ -71,7 +70,7 @@ in
         ui = true;
       };
       ghq = { 
-        root = "${devDir}";
+        root = "${home}/Developer";
       };
     };
   };
