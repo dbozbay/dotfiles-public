@@ -7,33 +7,84 @@ let
   xdg_configHome = "${home}/.config";
 in
 {
+
+  # TODO please change the username & home directory to your own
+  # home.username = "dbozbay";
+  # home.homeDirectory = "/home/dbozbay";
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    git
+    kitty
     fzf
     eza
     fd
     ripgrep
-    starship
     tmux
     yazi
     lazygit
     ghq
     # nu
   ];
+
+  # Create /etc/zshrc/ that loads the nix-darwin environment
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    shellAliases = 
+    let 
+      flakeDir = "~/nix";
+    in {
+      switch = "darwin-rebuild switch --flake ${flakeDir}";
+      flake = "nvim ${flakeDir}/flake.nix";
+
+      ll = "ls -l";
+      v = "nvim";
+      lg = "lazygit";
+     };
+  };
+
+  # git of course 
+  programs.git = {
+    enable = true;
+    userName = "dbozbay";
+    userEmail = "107803920+dbozbay@users.noreply.github.com";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+  };
+
+  # starship - an customizable prompt for any shell
+  programs.starship = {
+    enable = true;
+    # custom settings
+    settings = {
+      add_newline = false;
+      line_break.disabled = true;
+    };
+  };
+
+  # neovim - the GOAT editor bro
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    plugins = with pkgs.vimPlugins; [
+      rose-pine
+      telescope-nvim
+    ];
+    extraLuaConfig = 
+      ''
+        vim.g.mapleader = " "
+	vim.opt.number = true
+	vim.opt.relativenumber = true
+	vim.termguicolors = true
+      '';
+  };
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -63,6 +114,11 @@ in
   #home.sessionVariables = {
    # xdg_configHome = "~/.config";
   #};
+
+  # You can update home Manager without changing this value. See
+  # the home Manager release notes for a list of state version
+  # changes in each release.
+  home.stateVersion = "24.05";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

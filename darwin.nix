@@ -28,24 +28,13 @@
     nix.settings.experimental-features = "nix-command flakes";
 
     # Create /etc/zshrc/ that loads the nix-darwin environment
-    programs.zsh = {
-      enable = true;
-      enableCompletion = true;
-      enableSyntaxHighlighting = true;
-    };
+    programs.zsh.enable = true;
 
     # Aliases for ALL shells
-    environment.shellAliases = 
-    let 
-      flakeDir = "~/nix";
-    in {
-      switch = "darwin-rebuild switch --flake ${flakeDir}";
-      flake = "nvim ${flakeDir}/flake.nix";
-
-      ll = "ls -l";
-      v = "nvim";
-    };
-
+    # environment.shellAliases = 
+    #   v = "nvim";
+    # };
+  
     # Enable touch ID for Sudo commands
     security.pam.enableSudoTouchIdAuth = true;
 
