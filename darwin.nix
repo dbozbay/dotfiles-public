@@ -9,9 +9,7 @@
     # List packages installed in system profile. To search by name, run:
     # $ nix-env -qaP | grep wget
     environment.systemPackages =
-    [ pkgs.neovim
-      pkgs.arc-browser
-      pkgs.kitty
+    [ pkgs.vim
     ];
 
     # Auto upgrade nix package and the daemon service.
@@ -53,9 +51,10 @@
 	orientation = "bottom";
 	mru-spaces = false;
 	persistent-apps = [
-	  "/System/Applications/Safari.app"
+	  "/Applications/Safari.app"
 	  "${pkgs.arc-browser}/Applications/Arc.app"
 	  "${pkgs.kitty}/Applications/kitty.app"
+	  "${pkgs.discord-ptb}/Applications/Discord PTB.app"
         ];
       };
       NSGlobalDomain = {

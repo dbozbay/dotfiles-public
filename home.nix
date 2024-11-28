@@ -27,6 +27,10 @@ in
     yazi
     lazygit
     ghq
+    
+    # GUIs
+    arc-browser
+    discord-ptb
     # nu
   ];
 
