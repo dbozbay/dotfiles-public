@@ -4,6 +4,8 @@
 
 let
   home = builtins.getEnv "HOME";
+  pwd = builtins.getEnv "PWD";
+  devDir = "${home}/Developer";
   xdg_configHome = "${home}/.config";
 in
 {
@@ -58,7 +60,19 @@ in
     userName = "dbozbay";
     userEmail = "107803920+dbozbay@users.noreply.github.com";
     extraConfig = {
-      init.defaultBranch = "main";
+      init = {
+        defaultBranch = "main";
+      };
+      core = {
+        editor = "nvim";
+        excludesfile = "${pwd}/.gitignore_global";
+      };
+      color = {
+        ui = true;
+      };
+      ghq = { 
+        root = "${devDir}";
+      };
     };
   };
 
