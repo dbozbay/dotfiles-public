@@ -27,6 +27,23 @@
     # Create /etc/zshrc/ that loads the nix-darwin environment
     programs.zsh.enable = true;
 
+    # Enable homebrew
+    homebrew = {
+      enable = true;
+	  #    taps = [
+	  #      # {
+	  #        # name = "indirect/homebrew-tap";
+	  # # clone_target = "https://github.com/indirect/homebrew-tap.git";
+	  # # force_auto_update = true;
+	  #      # }
+	  #    ];
+      casks = [
+        # indirect/tap/ghostty
+      ];
+      onActivation.cleanup = "zap";
+    };
+
+
     # Aliases for ALL shells
     # environment.shellAliases = 
     #   v = "nvim";
@@ -85,5 +102,13 @@
     users.users.dbozbay = {
         name = "dbozbay";
         home = "/Users/dbozbay";
+	openssh.authorizedKeys.keys = [
+	  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGz22APsfP1C9A9RdW8vDe8ffb9HIiylnefDD/cyeXXr dbozbay"
+	];
     };
+
+    nix.settings.trusted-users = [
+      "root"
+      "dbozbay"
+    ];
 }

@@ -89,6 +89,21 @@ in
       '';
   };
 
+	#  # Enable homebrew
+	#  homebrew = {
+	#    enable = true;
+	#    taps = [
+	#      {
+	#        name = "indirect/homebrew-tap";
+	# clone_target = "https://github.com/indirect/homebrew-tap.git";
+	# force_auto_update = true;
+	#      }
+	#    ];
+	#    casks = [
+	#      # ghostty
+	#    ];
+	#    onActivation.cleanup = "zap";
+	#  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -98,7 +113,7 @@ in
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
     "${xdg_configHome}/kitty/kitty.conf".source = ./kitty.conf;
-    "${xdg_configHome}/karabiner/karabiner.json".source = ./karabiner.json;
+    # "${xdg_configHome}/karabiner/karabiner.json".source = ./karabiner.json;
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
