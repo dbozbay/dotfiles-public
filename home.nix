@@ -58,20 +58,12 @@ in
     enable = true;
     userName = "dbozbay";
     userEmail = "107803920+dbozbay@users.noreply.github.com";
+    ignores = import ./gitignore_global.nix;
     extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      core = {
-        editor = "nvim";
-        excludesfile = "${pwd}/.gitignore_global";
-      };
-      color = {
-        ui = true;
-      };
-      ghq = { 
-        root = "${home}/Dev";
-      };
+      init.defaultBranch = "main";
+      core.editor = "nvim";
+      color.ui = true;
+      ghq.root = "${home}/Dev";
     };
   };
 
