@@ -13,7 +13,7 @@
         init.defaultBranch = "main";
         core.editor = "nvim";
         color.ui = true;
-        ghq.root = "${home}/Dev";  # Use the 'home' variable for the git config
+        ghq.root = "${home}/Dev/ghq";  # Use the 'home' variable for the git config
       };
     };
   }
