@@ -13,5 +13,8 @@
       "the-unarchiver"
       "spotify"
     ];
+    masApps = {
+      "Ghostery" = 6504861501;
+    };
   };
 }
