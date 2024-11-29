@@ -11,7 +11,7 @@ cursor-style-blink = true
 
 mouse-hide-while-typing = true
 
-background-opacity = 0.80
+background-opacity = 0.90
 background-blur-radius = 30
 
 keybind = global:ctrl+s=toggle_quick_terminal
@@ -22,6 +22,6 @@ keybind = ctrl+minus=new_split:down
 
 # vim-tmux style navigation
 keybind = ctrl+l=goto_split:right
-eybind = ctrl+h=goto_split:left
+keybind = ctrl+h=goto_split:left
 keybind = ctrl+j=goto_split:bottom
 keybind = ctrl+k=goto_split:top
