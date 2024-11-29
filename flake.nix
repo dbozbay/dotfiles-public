@@ -19,10 +19,10 @@
       url = "github:zhaofengli-wip/nix-homebrew";
     };
 
-    # nixvim = {
-    #   url = "github:nix-community/nixvim";
-    #   nputs.nixpkgs.follows = "nixpkgs"
-    # };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
@@ -32,7 +32,7 @@
     nixpkgs, 
     home-manager, 
     nix-homebrew, 
-    # nixvim,
+    nixvim,
     ... 
   }: 
   let 
@@ -55,10 +55,10 @@
 	    {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./home-manager/home.nix;
 	      home-manager.extraSpecialArgs = {
-	        inherit username useremail hostname;
+	        inherit username useremail hostname nixvim;
 	      };
+              home-manager.users.${username} = import ./home-manager/home.nix;
 	    }
 
 	    nix-homebrew.darwinModules.nix-homebrew 
