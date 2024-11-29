@@ -1,8 +1,5 @@
-{ config, pkgs, lib, vars, ... }:
+{ vars, ... }:
 
-let 
-  user = "${vars.user}";
-in
 {
   imports = [
     ./packages.nix
@@ -11,8 +8,8 @@ in
   ];
    
   home = {
-    username = "${user}";
-    homeDirectory = "/Users/${user}";
+    username = vars.username;
+    homeDirectory = "/Users/${vars.username}";
     stateVersion = "24.05";
     
   };

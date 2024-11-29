@@ -2,9 +2,9 @@
 
   programs.zsh.enable = true;
 
-  users.users.${vars.user} = {
-    name = "${vars.user}";
-    home = "/Users/${vars.user}";
+  users.users.${vars.username} = {
+    name = "${vars.username}";
+    home = "/Users/${vars.username}";
     createHome = true;
     shell = pkgs.zsh;
   };

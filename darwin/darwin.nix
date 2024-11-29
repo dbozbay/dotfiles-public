@@ -3,6 +3,7 @@
   imports = [
     ./packages.nix
     ./modules/bundle.nix
+    # ../homebrew/homebrew.nix
   ];
    
    # Auto upgrade nix package and the daemon service.

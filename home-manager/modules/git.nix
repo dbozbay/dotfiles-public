@@ -7,14 +7,14 @@
   {
     programs.git = {
       enable = true;
-      userName = "dbozbay";
-      userEmail = "107803920+dbozbay@users.noreply.github.com";
+      userName = vars.username;
+      userEmail = vars.useremail;
       ignores = import ../files/gitignore_global.nix;
       extraConfig = {
         init.defaultBranch = "main";
         core.editor = "nvim";
         color.ui = true;
-        ghq.root = "/Users/${vars.user}/Dev/ghq";  # Use the 'home' variable for the git config
+        ghq.root = "/Users/${vars.username}/Dev/ghq";  # Use the 'home' variable for the git config
       };
     };
   }
