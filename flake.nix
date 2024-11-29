@@ -19,6 +19,11 @@
       url = "github:zhaofengli-wip/nix-homebrew";
     };
 
+    # nixvim = {
+    #   url = "github:nix-community/nixvim";
+    #   nputs.nixpkgs.follows = "nixpkgs"
+    # };
+
   };
 
   outputs = inputs@{ 
@@ -27,41 +32,45 @@
     nixpkgs, 
     home-manager, 
     nix-homebrew, 
+    # nixvim,
     ... 
   }: 
   let 
     username = "dbozbay";
     useremail = "dannybozbay@gmail.com";
-    hostname = "db-mbp";
+    hostname = "db-mbp"; 
     system = "x86_64-darwin";
-
-    specialArgs = {
-      inputs = inputs;
-      vars = { inherit username useremail hostname system; };
-    };
   in {
     darwinConfigurations = {
       "${hostname}" = nix-darwin.lib.darwinSystem {
-          inherit system specialArgs;
+          inherit system;
+	  specialArgs = {
+	    inherit username useremail hostname;
+	  };
           modules = [ 
+
             ./darwin/darwin.nix
-	  
-            home-manager.darwinModules.home-manager 
+            
+	    home-manager.darwinModules.home-manager 
 	    {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-	      home-manager.extraSpecialArgs = specialArgs;
               home-manager.users.${username} = import ./home-manager/home.nix;
+	      home-manager.extraSpecialArgs = {
+	        inherit username useremail hostname;
+	      };
 	    }
 
-		   nix-homebrew.darwinModules.nix-homebrew {
-		     nix-homebrew = {
-		       enable = true;
-		       user = "${username}";
+	    nix-homebrew.darwinModules.nix-homebrew 
+	    {
+	      nix-homebrew = {
+		enable = true;
+		user = "${username}";
 		autoMigrate = true;
-		     };
-		   }
-	        ];
+	      };
+	    }
+
+	  ];
         };
       };
     };

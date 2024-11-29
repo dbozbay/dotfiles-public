@@ -1,4 +1,4 @@
-{ config, vars,... }: 
+{ config, username, useremail,... }: 
 
   let 
     home = builtins.getEnv "HOME";  # Set 'home' to the value of the 'HOME' environment variable
@@ -7,14 +7,14 @@
   {
     programs.git = {
       enable = true;
-      userName = vars.username;
-      userEmail = vars.useremail;
+      userName = username;
+      userEmail = useremail;
       ignores = import ../files/gitignore_global.nix;
       extraConfig = {
         init.defaultBranch = "main";
         core.editor = "nvim";
         color.ui = true;
-        ghq.root = "/Users/${vars.username}/Dev/ghq";  # Use the 'home' variable for the git config
+        ghq.root = "/Users/${username}/Dev/ghq";  # Use the 'home' variable for the git config
       };
       aliases = {
         g = "git";
