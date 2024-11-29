@@ -12,9 +12,24 @@
         term_colors = true;
       };
     };
+    
+    # Web-devicons
+    plugins.web-devicons = {
+      enable = true;
+    };
 
     # Lualina
     plugins.lualine = {
+      enable = true;
+    };
+
+    # Telescope
+    plugins.telescope = {
+      enable = true;
+    };
+
+    # Treesitter (ALL parsers included!)
+    plugins.treesitter = {
       enable = true;
     };
 
@@ -23,7 +38,7 @@
       enable = true;
       servers = {
         nixd.enable = true;
-        lua-ls.enable = true;
+        lua_ls.enable = true;
 	ruff.enable = true;
 	pyright.enable = true;
       };
