@@ -11,7 +11,8 @@
     ];
     casks = [
       "the-unarchiver"
-      "nikitabobko/tap/aerospace"
+      # "nikitabobko/tap/aerospace"
+      "spotify"
     ];
   };
 }

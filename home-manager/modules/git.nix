@@ -16,6 +16,13 @@
         color.ui = true;
         ghq.root = "/Users/${vars.username}/Dev/ghq";  # Use the 'home' variable for the git config
       };
+      aliases = {
+        g = "git";
+        co = "checkout";
+	ga = "git add";
+	gc = "git commit";
+	gp = "git push";
+      };
     };
   }
 

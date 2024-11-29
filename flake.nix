@@ -15,9 +15,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nix-homebrew = {
-    #   url = "github:zhaofengli-wip/nix-homebrew";
-    # };
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+    };
 
   };
 
@@ -26,7 +26,7 @@
     nix-darwin, 
     nixpkgs, 
     home-manager, 
-    # nix-homebrew, 
+    nix-homebrew, 
     ... 
   }: 
   let 
@@ -54,13 +54,13 @@
               home-manager.users.${username} = import ./home-manager/home.nix;
 	    }
 
-		#    nix-homebrew.darwinModules.nix-homebrew {
-		#      nix-homebrew = {
-		#        enable = true;
-		#        user = "${username}";
-		# autoMigrate = true;
-		#      };
-		#    }
+		   nix-homebrew.darwinModules.nix-homebrew {
+		     nix-homebrew = {
+		       enable = true;
+		       user = "${username}";
+		autoMigrate = true;
+		     };
+		   }
 	        ];
         };
       };

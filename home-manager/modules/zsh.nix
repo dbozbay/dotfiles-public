@@ -13,6 +13,7 @@
       ll = "ls -l";
       v = "nvim";
       lg = "lazygit";
+      as = "aerospace";
      };
   };
 }
