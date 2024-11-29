@@ -11,7 +11,7 @@ cursor-style-blink = true
 
 mouse-hide-while-typing = true
 
-background-opacity = 0.80
+background-opacity = 0.99
 background-blur-radius = 30
 
 keybind = global:ctrl+s=toggle_quick_terminal
