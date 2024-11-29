@@ -3,6 +3,35 @@
     enable = true;
     defaultEditor = true;
 
+    # vim.opt.
+    opts = {
+      number = true;
+      relativenumber = true;
+
+      tapstop = 2;
+      shiftwidth = 2;
+      expandtab = true;
+      autoindent = true;
+
+      wrap = true;
+
+      ignorecase = true;
+      smartcase = true;
+      hlsearch = false;
+      incsearch = true;
+
+      termguicolors = true;
+
+      scrolloff = 8;
+      backspace = "indent,eol,start";
+
+      splitright = true;
+      splitbelow = true;
+
+      swapfile = false;
+      backup = false;
+    };
+
     # colorscheme
     colorschemes.catppuccin = {
       enable = true;
