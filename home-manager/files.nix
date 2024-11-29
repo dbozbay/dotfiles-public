@@ -9,6 +9,6 @@ in {
   home.file = {
     "${configDir}/kitty/kitty.conf".source = ./files/kitty.conf;
     "${configDir}/ghostty/config".source = ./files/ghostty;
-    # "${configDir}/aerospace/aerospace.toml".source = ./files/aerospace.toml;
+    "${configDir}/aerospace/aerospace.toml".source = ./files/aerospace.toml;
   };
 }
