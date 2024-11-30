@@ -3,7 +3,7 @@
     ./git.nix
     ./zsh.nix
     ./starship.nix
-    # ./neovim.nix
+    ./yazi.nix
     ./nixvim/bundle.nix
   ];
 }

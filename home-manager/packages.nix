@@ -7,7 +7,6 @@
     eza
     fd
     ripgrep
-    yazi
     lazygit
     ghq
 
