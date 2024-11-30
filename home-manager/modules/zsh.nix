@@ -9,7 +9,8 @@
       flakeDir = "~/nix";
     in {
       switch = "darwin-rebuild switch --flake ${flakeDir}";
-      check = "darwin-rebuild test --flake ${flakeDir}";
+      check = "darwin-rebuild check --flake ${flakeDir}";
+      gens = "darwin-rebuild --list-generations";
       
       ll = "ls -l";
       v = "nvim";
