@@ -9,6 +9,7 @@
     ripgrep
     lazygit
     ghq
+    yazi
 
     # GUIs
     arc-browser
