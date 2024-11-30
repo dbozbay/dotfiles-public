@@ -15,15 +15,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-    };
-
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+   neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+   nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    
   };
 
   outputs = inputs@{ 
@@ -43,36 +43,33 @@
   in {
     darwinConfigurations = {
       "${hostname}" = nix-darwin.lib.darwinSystem {
-          inherit system;
-	  specialArgs = {
-	    inherit username useremail hostname;
-	  };
-          modules = [ 
-
-            ./darwin/darwin.nix
-            
-	    home-manager.darwinModules.home-manager 
-	    {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-	      home-manager.extraSpecialArgs = {
-	        inherit username useremail hostname nixvim;
+        inherit system;
+	      specialArgs = {
+	        inherit inputs username useremail hostname;
 	      };
-              home-manager.users.${username} = import ./home-manager/home.nix;
-	    }
+        modules = [ 
+          ./darwin/darwin.nix
+          home-manager.darwinModules.home-manager 
+	        {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${username} = import ./home-manager/home.nix;
+	          home-manager.extraSpecialArgs = {
+	            inherit inputs username useremail hostname;
+	          };
+	        }
 
-	    nix-homebrew.darwinModules.nix-homebrew 
-	    {
-	      nix-homebrew = {
-		enable = true;
-		user = "${username}";
-		autoMigrate = true;
-	      };
-	    }
-
-	  ];
-        };
+	        nix-homebrew.darwinModules.nix-homebrew 
+	        {
+	          nix-homebrew = {
+		          enable = true;
+		          user = "${username}";
+	  	        autoMigrate = true;
+	          };
+	        }
+	      ];
       };
     };
+  };
 }
 
