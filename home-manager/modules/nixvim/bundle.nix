@@ -3,12 +3,17 @@
     enable = true;
     defaultEditor = true;
 
+    # vim.g
+    globals = {
+      leader = " ";
+    };
+
     # vim.opt.
     opts = {
       number = true;
       relativenumber = true;
 
-      tapstop = 2;
+      tabstop = 2;
       shiftwidth = 2;
       expandtab = true;
       autoindent = true;
@@ -31,6 +36,28 @@
       swapfile = false;
       backup = false;
     };
+
+    # keymaps
+    keymaps = [
+      {
+        mode = "i";
+        action = "<ESC>";
+        key = "jk";
+      }
+
+      {
+        action = "<C-[>";
+        key = "<ESC>";
+      }
+
+      {
+         mode = [ "n" "v" ];
+         action = "gg<S-v>G";
+         key = "<C-a>";
+         options.desc = "Select all";
+      }
+    ];
+
 
     # colorscheme
     colorschemes.catppuccin = {
