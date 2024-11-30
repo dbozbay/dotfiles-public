@@ -9,8 +9,8 @@
       flakeDir = "~/nix";
     in {
       switch = "darwin-rebuild switch --flake ${flakeDir}";
-      flake = "nvim ${flakeDir}/flake.nix";
-
+      check = "darwin-rebuild test --flake ${flakeDir}";
+      
       ll = "ls -l";
       v = "nvim";
       lg = "lazygit";

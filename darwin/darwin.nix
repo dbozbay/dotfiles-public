@@ -12,8 +12,18 @@
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
+  # Automated garbage collection
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 30";
+  };
+
+  nix.optimise.automatic = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+
 
   # Used for backwards compatibility, please read the changelog before changing: `darwin-rebuild changelog`
   system.stateVersion = 5;
