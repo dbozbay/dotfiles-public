@@ -2,6 +2,10 @@
   
   system = {
     defaults = {
+      trackpad = {
+         Clicking = true;
+         Dragging = true;
+      };
       dock = {
         autohide = true;
         autohide-delay = 0.0;
