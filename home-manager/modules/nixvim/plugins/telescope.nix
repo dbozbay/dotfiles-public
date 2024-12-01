@@ -1,4 +1,7 @@
-{
+{ ... }: let
+  actions = "require('telescope.actions')";
+  fb_actions = "require('telescope._extensions.file_browser.actions')";
+in {
   programs.nixvim = {
     plugins = {
       telescope = {
@@ -11,9 +14,7 @@
             };
             sorting_strategy = "ascending";
             wrap_results = true;
-            mappings = let
-              actions = "require('telescope.actions')";
-            in {
+            mappings = {
               i = {
                 "<esc>" = {
                   __raw = "${actions}.close";
@@ -34,9 +35,7 @@
             hidden = true;
             grouped = true;
             respect_gitignore = false;
-            mappings = let
-              fb_actions = "require('telescope._extensions.file_browser.actions')";
-            in {
+            mappings = {
               n = {
                 "a" = "${fb_actions}.create";
                 "r" = "${fb_actions}.rename";
@@ -45,7 +44,7 @@
                 "d" = "${fb_actions}.remove";
                 "o" = "${fb_actions}.open";
                 "h" = "${fb_actions}.goto_parent_dir";
-                "l" = "${fb_actions}.goto_cwd";
+                "l" = "${actions}.select_default";
                 "G" = "${fb_actions}.goto_home_dir";
                 "<C-h>" = "${fb_actions}.toggle_hidden";
                 "<C-f>" = "${fb_actions}.toggle_browser";
