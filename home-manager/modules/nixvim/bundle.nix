@@ -1,13 +1,13 @@
-{ inputs, pkgs, ... }: {
-  
+{ pkgs, ... }: {
+
   programs.nixvim = {
     enable = true;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;   
+    package = pkgs.neovim; # This is actually neovim-nightly!
     defaultEditor = true;
 
     # vim.g
     globals = {
-      leader = " ";
+      mapleader = " ";
     };
 
     # vim.opt.
@@ -84,18 +84,53 @@
     # Telescope
     plugins.telescope = {
       enable = true;
+      keymaps = {
+        ";f" = {
+          action = "find_files";
+          options = {
+            desc = "Telescope Find Files";
+          };
+        };
+        ";g" = {
+          action = "git_files";
+          options = {
+            desc = "Telescope Git Files";
+          };
+        };
+        ";s" = "live_grep";
+      };
     };
 
     # Treesitter (ALL parsers included!)
     plugins.treesitter = {
       enable = true;
+      settings = {
+        ensure_installed = [
+          "nix"
+          "python"
+          "cpp"
+          "lua"
+          "toml"
+          "json"
+          "markdown"
+          "markdown_inline"
+        ];
+      };
     };
 
     # Lsp
     plugins.lsp = {
       enable = true;
       servers = {
-        nixd.enable = true;
+        
+        nixd = {
+          enable = true;
+          settings = {
+            formatting.command = [ "alejandra" ];
+          };
+        };
+
+
         lua_ls.enable = true;
 	ruff.enable = true;
 	pyright.enable = true;
@@ -115,5 +150,37 @@
         ];
       };
     };
+
+    # Conform (formatter)
+    plugins.conform-nvim = {
+      enable = true;
+      settings = {
+        formatters_by_ft = {
+          cpp = [ "clang_format" ];
+          python = [ 
+            "ruff_format"
+            "ruff_organize_imports"
+          ];
+          lua = [ "stylua" ];
+          nix = [ 
+            "nixfmt"
+            "alejandra" 
+          ];
+        };
+        default_format_opts = {
+          lsp_format = "fallback";
+        };
+        format_on_save = {
+          timeout = 500;
+          lsp_fallback = "fallback";
+        };
+        notify_on_error = true;
+      };
+    };
+    extraPlugins = with pkgs; [
+      alejandra 
+      stylua
+      nixfmt-rfc-style
+    ];
   };
 }

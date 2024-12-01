@@ -20,10 +20,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+   nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-   nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    
   };
 
   outputs = inputs@{ 
@@ -51,12 +51,12 @@
           ./darwin/darwin.nix
           home-manager.darwinModules.home-manager 
 	        {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./home-manager/home.nix;
+            # home-manager.useGlobalPkgs = true;
+            # home-manager.useUserPackages = true;
 	          home-manager.extraSpecialArgs = {
 	            inherit inputs username useremail hostname;
 	          };
+            home-manager.users.${username} = import ./home-manager/home.nix;
 	        }
 
 	        nix-homebrew.darwinModules.nix-homebrew 

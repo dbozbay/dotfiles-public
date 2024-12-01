@@ -1,4 +1,4 @@
-{  inputs, username, ... }: let
+{  inputs, username, pkgs, ... }: let
 
   homeDir = "/Users/${username}";
   configDir = "${homeDir}/.config";
@@ -7,15 +7,21 @@
 in {
 
   imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+    
     ./packages.nix
     ./modules/bundle.nix
-    inputs.nixvim.homeManagerModules.nixvim
   ];
 
+  programs.home-manager.enable = true;
+ 
   nixpkgs = {
-    overlays =  [
-      inputs.neovim-nightly-overlay.overlay
+    overlays = [
+      inputs.neovim-nightly-overlay.overlays.default
     ];
+    config = {
+      allowUnfree = true;
+    };
   };
 
   home = {
@@ -49,8 +55,5 @@ in {
       "${configDir}/yazi/theme.toml".source = ./files/yazi-catppuccin.toml; 
     };
   };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }
 
