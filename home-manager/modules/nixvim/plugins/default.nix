@@ -5,5 +5,6 @@
   ./lualine.nix
   ./telescope.nix
   ./lsp.nix
+  ./cmp.nix
   ];
 }

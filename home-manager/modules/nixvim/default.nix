@@ -24,12 +24,7 @@
 	#
 	#
 	#
-	#        lua_ls.enable = true;
-	# ruff.enable = true;
-	# pyright.enable = true;
-	#      };
-	#    };
-	#
+#
 	#    # Autocompletion
 	#    plugins.cmp = {
 	#      enable = true;
