@@ -12,8 +12,10 @@ in {
             layout_config = {
               prompt_position = "top";
             };
+            path_display = [ "smart" ];
             sorting_strategy = "ascending";
             wrap_results = true;
+            
             mappings = {
               i = {
                 "<esc>" = {
@@ -31,9 +33,12 @@ in {
             hijack_netrw = true;
             theme = "dropdown";
             previewer = false;
+            path = "%:p:h";
             initial_mode = "normal";
             hidden = true;
+            select_buffer = true;
             grouped = true;
+            hide_parent_dir = true;
             respect_gitignore = false;
             mappings = {
               n = {
@@ -73,9 +78,34 @@ in {
             };
           };
           ";e" = {
-            action = "file_browser";
+            action = "file_browser path=%:p:h select_buffer=true";
             options = {
               desc = "Telescope File Browser";
+            };
+          };
+
+          ";r" = {
+            action = "oldfiles";
+            options = {
+              desc = "Telescope Recent Files";
+            };
+          };
+          ";d" = {
+            action = "diagnostics";
+            options = {
+              desc = "Telescope Diagnostics";
+            };
+          };
+          ";k" = {
+            action = "keymaps";
+            options = {
+              desc = "Telescope Keymaps";
+            };
+          };
+          ";q" = {
+            action = "quickfix";
+            options = {
+              desc = "Telescope Quickfixs";
             };
           };
         };

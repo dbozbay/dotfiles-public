@@ -36,11 +36,9 @@ in {
     };
       
     shellAliases = {
-      dswitch = "darwin-rebuild switch --flake ${flakeDir}";
-      dcheck = "darwin-rebuild check --flake ${flakeDir}";
-      dbuild = "darwin-rebuild build --flake ${flakeDir}";
-      dact = "darwin-rebuild activate --flake ${flakeDir}";
-      dgens = "darwin-rebuild --list-generations";
+      ds = "darwin-rebuild switch --flake ${flakeDir}";
+      dc = "darwin-rebuild check --flake ${flakeDir}";
+      dg = "darwin-rebuild --list-generations";
 
       ll = "ls -l";
       v = "nvim";

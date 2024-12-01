@@ -1,5 +1,4 @@
 {
-
   programs.nixvim = {
     plugins = {
       treesitter = {
@@ -16,14 +15,6 @@
             "json"
             "rust"
           ];
-          incremental_selection = {
-           enable = true;
-           keymaps = {
-             initSelection = "<C-space>";
-             nodeIncremental = "<C-space>";
-             nodeDecremental = "<bs>";
-           };
-          };
         };
       };
       
