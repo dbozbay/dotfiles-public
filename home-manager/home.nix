@@ -10,7 +10,7 @@ in {
     inputs.nixvim.homeManagerModules.nixvim
     
     ./packages.nix
-    ./modules/bundle.nix
+    ./modules/default.nix
   ];
 
   programs.home-manager.enable = true;

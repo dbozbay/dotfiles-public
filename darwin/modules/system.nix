@@ -41,6 +41,8 @@
 
   # Enable touch ID for Sudo commands
   security.pam.enableSudoTouchIdAuth = true; 
+
+  services.karabiner-elements.enable = true;
 }
         
 

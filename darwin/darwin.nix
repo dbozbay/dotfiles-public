@@ -2,7 +2,7 @@
 
   imports = [
     ./packages.nix
-    ./modules/bundle.nix
+    ./modules/default.nix
     ../homebrew/homebrew.nix
   ];
    

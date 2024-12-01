@@ -3,6 +3,6 @@
     ./git.nix
     ./zsh.nix
     ./starship.nix
-    ./nixvim/bundle.nix
+    ./nixvim/default.nix
   ];
 }
