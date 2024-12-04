@@ -14,6 +14,7 @@
       autoindent = true;
       
       cursorline = true;
+      guicursor = "";
       wrap = true;
 
       ignorecase = true;

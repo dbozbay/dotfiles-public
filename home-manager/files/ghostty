@@ -1,7 +1,7 @@
-theme = catppuccin-mocha
-# theme = Monokai Soda
+# theme = catppuccin-mocha
+theme = Monokai Soda
 
-font-family = JetBrainsMono Nerd Font Mono
+font-family = JetBrainsMono NF
 font-size = 22
 
 # window-decoration = false
@@ -9,6 +9,7 @@ macos-titlebar-style = hidden
 
 shell-integration-features = no-cursor
 
+cursor-color = ffffff
 cursor-style = block
 cursor-style-blink = true
 
@@ -30,7 +31,7 @@ keybind = ctrl+/=new_split:right
 keybind = ctrl+minus=new_split:down
 
 # vim-tmux style navigation
-keybind = ctrl+l=goto_split:right
-keybind = ctrl+h=goto_split:left
-keybind = ctrl+j=goto_split:bottom
-keybind = ctrl+k=goto_split:top
+keybind = super+alt+l=goto_split:right
+keybind = super+alt+h=goto_split:left
+keybind = super+alt+j=goto_split:bottom
+keybind = super+alt+k=goto_split:top

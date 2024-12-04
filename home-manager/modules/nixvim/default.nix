@@ -8,67 +8,21 @@
     ./plugins/default.nix
   ];
 
-
   programs.nixvim = {
     enable = true;
     package = pkgs.neovim; # This is actually neovim-nightly!
     defaultEditor = true;
+
+    extraPlugins = with pkgs.vimPlugins; [
+      monokai-pro-nvim
+    ];
+
+    extraConfigLua = ''
+    	require("monokai-pro").setup({
+        transparent_background = true;
+      })
+
+	vim.cmd([[colorscheme monokai-pro]])
+    '';
   };
 }
-
-	#    # Web-devicons
-	#    plugins.web-devicons = {
-	#      enable = true;
-	#    };
-	#
-	#
-	#
-	#
-#
-	#    # Autocompletion
-	#    plugins.cmp = {
-	#      enable = true;
-	#      autoEnableSources = true;
-	#      settings = {
-	#        sources = [
-	#   {name = "nvim_lsp";}
-	#   {name = "luasnip";}
-	#   {name = "path";}
-	#   {name = "buffer";}
-	#        ];
-	#      };
-	#    };
-	#
-	#    # Conform (formatter)
-	#    plugins.conform-nvim = {
-	#      enable = true;
-	#      settings = {
-	#        formatters_by_ft = {
-	#          cpp = [ "clang_format" ];
-	#          python = [ 
-	#            "ruff_format"
-	#            "ruff_organize_imports"
-	#          ];
-	#          lua = [ "stylua" ];
-	#          nix = [ 
-	#            "nixfmt"
-	#            "alejandra" 
-	#          ];
-	#        };
-	#        default_format_opts = {
-	#          lsp_format = "fallback";
-	#        };
-	#        format_on_save = {
-	#          timeout = 500;
-	#          lsp_fallback = "fallback";
-	#        };
-	#        notify_on_error = true;
-	#      };
-	#    };
-	#    extraPlugins = with pkgs; [
-	#      alejandra 
-	#      stylua
-	#      nixfmt-rfc-style
-	#    ];
-	#  };
-
